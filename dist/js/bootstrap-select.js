@@ -1,7 +1,7 @@
 /*!
  * Bootstrap-select v1.6.3 (http://silviomoreto.github.io/bootstrap-select/)
  *
- * Copyright 2013-2014 bootstrap-select
+ * Copyright 2013-2017 bootstrap-select
  * Licensed under MIT (https://github.com/silviomoreto/bootstrap-select/blob/master/LICENSE)
  */
 (function ($) {
@@ -298,7 +298,7 @@
             subtext = typeof $this.data('subtext') !== 'undefined' ? '<small class="muted text-muted">' + $this.data('subtext') + '</small>' : '',
             icon = typeof $this.data('icon') !== 'undefined' ? '<span class="' + that.options.iconBase + ' ' + $this.data('icon') + '"></span> ' : '',
             isDisabled = $this.is(':disabled') || $this.parent().is(':disabled'),
-            index = $this[0].index;
+            index = $this.index();
         if (icon !== '' && isDisabled) {
           icon = '<span>' + icon + '</span>';
         }
