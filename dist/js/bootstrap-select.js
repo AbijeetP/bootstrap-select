@@ -202,44 +202,17 @@
           btnSize = this.$element.parents().hasClass('form-group-lg') ? ' btn-lg' : (this.$element.parents().hasClass('form-group-sm') ? ' btn-sm' : '');
       // Elements
       var header = this.options.header ? '<div class="popover-title"><button type="button" class="close" aria-hidden="true">&times;</button>' + this.options.header + '</div>' : '';
-<<<<<<< HEAD
       var searchbox = this.options.liveSearch ? '<div class="bs-searchbox"><input type="text" class="input-block-level form-control" autocomplete="off" /></div>' : '';
       var actionsbox = this.options.actionsBox ? '<div class="bs-actionsbox">' +
       '<div class="btn-group btn-block">' +
       '<button class="actions-btn bs-select-all btn btn-sm btn-default">' +
-=======
-      var searchbox = this.options.liveSearch ?
-      '<div class="bs-searchbox">' +
-      '<input type="text" class="form-control" autocomplete="off"' +
-      (null === this.options.liveSearchPlaceholder ? '' : ' placeholder="' + htmlEscape(this.options.liveSearchPlaceholder) + '"') + '>' +
-      '</div>'
-          : '';
-      var actionsbox = this.multiple && this.options.actionsBox ?
-      '<div class="bs-actionsbox">' +
-      '<div class="btn-group btn-group-sm btn-block">' +
-      '<button class="actions-btn bs-select-all btn btn-default">' +
->>>>>>> 539400a... SelectAll/DeselectAll (Fix #721, Fix #901)
       this.options.selectAllText +
       '</button>' +
       '<button class="actions-btn bs-deselect-all btn btn-sm btn-default">' +
       this.options.deselectAllText +
       '</button>' +
       '</div>' +
-<<<<<<< HEAD
       '</div>' : '';
-=======
-      '</div>'
-          : '';
-      var donebutton = this.multiple && this.options.doneButton ?
-      '<div class="bs-donebutton">' +
-      '<div class="btn-group btn-block">' +
-      '<button class="btn btn-sm btn-default">' +
-      this.options.doneButtonText +
-      '</button>' +
-      '</div>' +
-      '</div>'
-          : '';
->>>>>>> 539400a... SelectAll/DeselectAll (Fix #721, Fix #901)
       var drop =
           '<div class="btn-group bootstrap-select' + multiple + inputGroup + '">' +
           '<button type="button" class="btn dropdown-toggle selectpicker' + btnSize + '" data-toggle="dropdown"' + autofocus + '>' +
@@ -911,16 +884,12 @@
 
     selectAll: function () {
       this.findLis();
-      this.$element.find('option:enabled').not('[data-divider]').not('[data-hidden]').prop('selected', true);
-      this.$lis.not('.divider').not('.dropdown-header').not('.disabled').not('.hidden').addClass('selected');
-      this.render(false);
+      this.$lis.not('.divider').not('.disabled').not('.selected').filter(':visible').find('a').click();
     },
 
     deselectAll: function () {
       this.findLis();
-      this.$element.find('option:enabled').not('[data-divider]').not('[data-hidden]').prop('selected', false);
-      this.$lis.not('.divider').not('.dropdown-header').not('.disabled').not('.hidden').removeClass('selected');
-      this.render(false);
+      this.$lis.not('.divider').not('.disabled').filter('.selected').filter(':visible').find('a').click();
     },
 
     keydown: function (e) {

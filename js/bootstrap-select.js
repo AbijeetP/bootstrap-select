@@ -878,16 +878,12 @@
 
     selectAll: function () {
       this.findLis();
-      this.$element.find('option:enabled').not('[data-divider]').not('[data-hidden]').prop('selected', true);
-      this.$lis.not('.divider').not('.dropdown-header').not('.disabled').not('.hidden').addClass('selected');
-      this.render(false);
+      this.$lis.not('.divider').not('.disabled').not('.selected').filter(':visible').find('a').click();
     },
 
     deselectAll: function () {
       this.findLis();
-      this.$element.find('option:enabled').not('[data-divider]').not('[data-hidden]').prop('selected', false);
-      this.$lis.not('.divider').not('.dropdown-header').not('.disabled').not('.hidden').removeClass('selected');
-      this.render(false);
+      this.$lis.not('.divider').not('.disabled').filter('.selected').filter(':visible').find('a').click();
     },
 
     keydown: function (e) {
